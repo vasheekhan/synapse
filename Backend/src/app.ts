@@ -19,6 +19,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://notion-clone-1-g9dx.onrender.com",
   "https://synapse-six-tau.vercel.app",
+  "https://synapse-66a9.vercel.app",  // ← Add your current frontend
   process.env.FRONTEND_URL || "http://localhost:5173"
 ];
 
