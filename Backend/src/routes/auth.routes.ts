@@ -86,11 +86,7 @@ router.post(
   passwordController.resetPassword
 );
 
-router.get(
-  "/me",
-  authMiddleware.authenticate,
-  sessionController.me
-);
+
 
 router.patch(
   "/me",

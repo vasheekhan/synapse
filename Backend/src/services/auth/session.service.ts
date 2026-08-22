@@ -44,16 +44,16 @@ class SessionService {
       
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: isProduction,
-        sameSite: isProduction ? "none" : "lax",
+        secure: true,
+        sameSite: "none",
         maxAge: FIFTEEN_MINUTES,
         path: "/",
       });
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: isProduction,
-        sameSite: isProduction ? "none" : "lax", 
+        secure: true,
+        sameSite: "none",
         maxAge: THIRTY_DAYS,
         path: "/",
       });
