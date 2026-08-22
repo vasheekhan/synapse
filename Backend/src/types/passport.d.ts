@@ -1,8 +1,17 @@
-import { Profile } from "passport-google-oauth20";
+import "express";
 
 declare global {
   namespace Express {
-    interface User extends Profile {}
+    interface User {
+      id: string;
+      emails?: Array<{
+        value: string;
+      }>;
+      displayName: string;
+      photos?: Array<{
+        value: string;
+      }>;
+    }
   }
 }
 
