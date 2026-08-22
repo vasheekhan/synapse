@@ -26,7 +26,7 @@ class GoogleController {
 
     res.cookie("accessToken", auth.accessToken, {
       httpOnly: true,
-      secure: env.isProd,
+      secure: true,
       sameSite: "none",
       maxAge: FIFTEEN_MINUTES,
       path: "/",
