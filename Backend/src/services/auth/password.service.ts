@@ -87,7 +87,7 @@ class PasswordService {
         data: {
           email: data.email,
           name: user.name,
-          passwordHash: user.passwordHash!,
+          passwordHash: user.passwordHash ?? "",
           codeHash,
           type: "FORGOT_PASSWORD",
           expiresAt: new Date(Date.now() + 10 * 60 * 1000),
