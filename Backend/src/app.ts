@@ -1,3 +1,18 @@
+declare global {
+  namespace Express {
+    interface Request {
+      userId?: string;
+      user?: {
+        id: string;
+        displayName: string;
+        emails?: Array<{ value: string }>;
+        photos?: Array<{ value: string }>;
+      };
+    }
+  }
+}
+
+
 import express from "express";
 import passport from "./config/passport";
 import authRoutes from "./routes/auth.routes";

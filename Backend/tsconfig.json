@@ -11,8 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node", "express"],
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "types": ["node", "express"]
   },
   "include": ["src/**/*", "api/**/*"],
   "exclude": ["node_modules", "dist"]
