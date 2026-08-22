@@ -7,39 +7,48 @@ const FIFTEEN_MINUTES = 15 * 60 * 1000;
 const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
 
 class SessionController {
-  async refreshToken(req: Request, res: Response) {
-    const refreshToken = req.cookies.refreshToken;
-    
-    if (!refreshToken) {
-      return res.status(401).json({
-        success: false,
-        message: "Refresh token missing",
-      });
-    }
+ async refreshToken(req: Request, res: Response) {
+  console.log("========== REFRESH ==========");
+  console.log("Cookies:", req.cookies);
+  console.log(
+    "Refresh token:",
+    req.cookies.refreshToken ? "EXISTS" : "MISSING"
+  );
 
-    const auth = await sessionService.refreshToken(refreshToken);
+  const refreshToken = req.cookies.refreshToken;
 
-    res.cookie("accessToken", auth.accessToken, {
-      httpOnly: true,
-      secure:true,
-      sameSite: "none",
-      maxAge: FIFTEEN_MINUTES,
-      path: "/",
-    });
-
-    res.cookie("refreshToken", auth.refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      maxAge: THIRTY_DAYS,
-      path: "/",
-    });
-
-    return res.status(200).json({
-      success: true,
-      user: auth.user,
+  if (!refreshToken) {
+    return res.status(401).json({
+      success: false,
+      message: "Refresh token missing",
     });
   }
+
+  const auth = await sessionService.refreshToken(refreshToken);
+
+  res.cookie("accessToken", auth.accessToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: FIFTEEN_MINUTES,
+    path: "/",
+  });
+
+  res.cookie("refreshToken", auth.refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: THIRTY_DAYS,
+    path: "/",
+  });
+
+  console.log("REFRESH SUCCESS");
+
+  return res.json({
+    success: true,
+    user: auth.user,
+  });
+}
 
   async logout(req: Request, res: Response) {
     await sessionService.logout(req.userId!);
