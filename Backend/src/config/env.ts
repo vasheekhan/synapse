@@ -30,7 +30,7 @@ export const env = {
   DB_PASSWORD: getEnv("DB_PASSWORD"),
   DB_NAME: getEnv("DB_NAME"),
   DATABASE_URL: getEnv("DATABASE_URL"),
-  frontendURL: getOptionalEnv("FRONTEND_URL", "http://localhost:5173"),
+  frontendURL: getOptionalEnv("FRONTEND_URL"),
   GOOGLE_CLIENT_ID: getEnv("GOOGLE_CLIENT_ID"),
   GOOGLE_CLIENT_SECRET: getEnv("GOOGLE_CLIENT_SECRET"),
   GOOGLE_CALLBACK_URL: getEnv("GOOGLE_CALLBACK_URL"),
