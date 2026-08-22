@@ -5,10 +5,15 @@ import { env } from "../../config/env";
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-
+interface GoogleProfile {
+  id: string;
+  emails?: Array<{ value: string }>;
+  displayName: string;
+  photos?: Array<{ value: string }>;
+}
 class GoogleController {
   async googleCallback(req: Request, res: Response) {
-    const profile = req.user as Express.User;
+    const profile = req.user as GoogleProfile;
 
   const dto = {
     googleId: profile.id,
