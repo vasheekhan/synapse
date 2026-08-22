@@ -8,14 +8,14 @@ const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
 
 class GoogleController {
   async googleCallback(req: Request, res: Response) {
-    const profile = req.user!;
+    const profile = req.user as Express.User;
 
-    const dto = {
-      googleId: profile.id,
-      email: profile.emails?.[0]?.value ?? "",
-      name: profile.displayName,
-      avatar: profile.photos?.[0]?.value,
-    };
+  const dto = {
+    googleId: profile.id,
+    email: profile.emails?.[0]?.value ?? "",
+    name: profile.displayName,
+    avatar: profile.photos?.[0]?.value,
+  };
 
     const auth = await googleService.loginWithGoogle(dto);
 
