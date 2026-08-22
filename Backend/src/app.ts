@@ -1,4 +1,4 @@
-import './types/index';
+/// <reference path="./types/index.d.ts" />
 
 import express from "express";
 import passport from "./config/passport";
