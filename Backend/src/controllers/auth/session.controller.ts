@@ -21,16 +21,16 @@ class SessionController {
 
     res.cookie("accessToken", auth.accessToken, {
       httpOnly: true,
-      secure: env.isProd,
-      sameSite: env.isProd ? "none" : "lax",
+      secure:true,
+      sameSite: "none",
       maxAge: FIFTEEN_MINUTES,
       path: "/",
     });
 
     res.cookie("refreshToken", auth.refreshToken, {
       httpOnly: true,
-      secure: env.isProd,
-      sameSite: env.isProd ? "none" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: THIRTY_DAYS,
       path: "/",
     });
@@ -46,15 +46,15 @@ class SessionController {
 
     res.clearCookie("accessToken", {
       httpOnly: true,
-      secure: env.isProd,
-      sameSite: env.isProd ? "none" : "lax",
+      secure: true,
+      sameSite: "none",
       path: "/",
     });
 
     res.clearCookie("refreshToken", {
       httpOnly: true,
-      secure: env.isProd,
-      sameSite: env.isProd ? "none" : "lax",
+      secure:true,
+      sameSite: "none",
       path: "/",
     });
 

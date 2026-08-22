@@ -27,7 +27,7 @@ class GoogleController {
     res.cookie("accessToken", auth.accessToken, {
       httpOnly: true,
       secure: env.isProd,
-      sameSite: env.isProd ? "none" : "lax",
+      sameSite: "none",
       maxAge: FIFTEEN_MINUTES,
       path: "/",
     });
@@ -35,7 +35,7 @@ class GoogleController {
     res.cookie("refreshToken", auth.refreshToken, {
       httpOnly: true,
       secure: env.isProd,
-      sameSite: env.isProd ? "none" : "lax",
+      sameSite: "none",
       maxAge: THIRTY_DAYS,
       path: "/",
     });
