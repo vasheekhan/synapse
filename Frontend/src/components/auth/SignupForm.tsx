@@ -77,7 +77,7 @@ export default function SignupForm({
     setErrors({});
 
     try {
-      const response = await registerUser({
+      await registerUser({
         name: name.trim(),
         email,
         password,
